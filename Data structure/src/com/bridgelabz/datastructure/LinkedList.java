@@ -1,34 +1,33 @@
 package com.bridgelabz.datastructure;
 
 public class LinkedList {
-    public class LinkedList<K> {
-        private Node head;
-        private Node tail;
+    private Node head;
+    private Node tail;
+    private Node<K> head;
+    private Node<K> tail;
 
-        public void add(K key) {
-            Node<K> node = new Node<>(key);
-            if (head == null) {
-                this.head = node;
-                this.tail = node;
-            } else {
-                node.setNext(head);
-                head = node;
-            }
+    public void add(K key) {
+        Node<K> node = new Node<>(key);
+        @ @ -29, 11 + 29, 17 @@public void insert (K key){
+            node.setNext(tail);
+            head.setNext(node);
         }
-
-        public static void main(String[] args) {
-            Node<Integer> node1 = new Node<>(56);
-            Node<Integer> node2 = new Node<>(30);
-            Node<Integer> node3 = new Node<>(70);
-            node1.setNext(node2);
-            node2.setNext(node3);
-
+        public K pop () {
+            K deleteData = head.getData();
+            this.head = head.getNext();
+            return deleteData;
+        }
+        public static void main (String[]args){
             LinkedList linkedList = new LinkedList();
-            linkedList.add(56);
-            linkedList.add(30);
-            linkedList.add(70);
+            linkedList.append(56);
+            linkedList.append(30);
+            linkedList.append(70);
+
+            linkedList.insert(56);
+            System.out.println(linkedList.pop());
         }
     }
 }
+
 
 
